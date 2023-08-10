@@ -11,3 +11,46 @@
     width: 100%;
     padding-top: 2em;
 }
+.filterBar {
+    display: flex;
+    align-items:center;
+    justify-content:right;
+    color: #fff;
+    
+    background-color: transparent;
+    /* padding: 3px; */
+    /* border-radius: 5px; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+  }
+  
+  select {
+    /* padding: 8px; */
+    font-size: 14px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para los select */
+  select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px #3498db;
+  }
+  
+  /* Estilos para las opciones del select */
+  option {
+    padding: 8 0 0 8px;
+    margin: 0px;
+  }
+  
+  /* Estilos para las opciones seleccionadas */
+  option:checked {
+    background-color: #3498db;
+    color: #fff;
+  }
+  h2{
+    font-size: medium;
+    padding-left: 20px;
+    padding-right: 20px
+  }
+  

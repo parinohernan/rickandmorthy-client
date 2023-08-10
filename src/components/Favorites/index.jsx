@@ -1,78 +1,3 @@
-// // import React, { useEffect } from "react";
-// // import style from "../Cards/Cards.module.css";
-// // import { useDispatch, useSelector } from "react-redux";
-// // import Card from "../../components/Card/Card";
-// // import {
-// //   filterCards,
-// //   getFavorites,
-// //   orderCards,
-// //   resetFavorites,
-// // } from "../../redux/actions";
-// // //import { motion } from "framer-motion";
-
-// // const Favorites = ({idUser}) => {
-// //   // const [guardados, setguardados] = useState([]);
-// //   const { myFavorites } = useSelector((state) => state);
-// //   const { allCharacters } = useSelector((state) => state);
-// //   const dispatch = useDispatch();
-
-// //   const handlerOrder = (event) => {
-// //     //dispatch(orderCards(event.target.value));
-
-// //   };
-// //   const handlerFilter = (event) => {
-// //     dispatch(filterCards(event.target.value));
-// //   };
-
-// //   useEffect(() => {
-// //     dispatch(getFavorites(idUser));
-
-// //         return () => {
-// //       dispatch(resetFavorites());
-// //     }
-// //   }, []);
-
-// //   return (
-// //     <>
-// //       <div className={style.divSelects}>
-// //         <select onChange={handlerOrder} defaultValue="Order">
-// //           <option disabled="disabled" value="Order">
-// //             Order By
-// //           </option>
-// //           <option value="Ascendente">Ascendente</option>
-// //           <option value="Descendente">Descendente</option>
-// //         </select>
-// //         <select onChange={handlerFilter} defaultValue="Filter">
-// //           <option disabled="disabled" value="Filter">
-// //             Filter By
-// //           </option>
-// //           <option value="Todos">Todos</option>
-// //           <option value="Male">Male</option>
-// //           <option value="Female">Female</option>
-// //           <option value="Unknown">Unknown</option>
-// //           <option value="Genderless">Genderless</option>
-// //         </select>
-// //       </div>
-// //       <div className={style.divCards}>
-// //         {myFavorites.map((char) => {
-// //           return (
-// //             <Card
-// //               key={char.id}
-// //               id={char.id}
-// //               name={char.name}
-// //               species={char.species}
-// //               gender={char.gender}
-// //               image={char.image}
-// //               idUser={idUser}
-// //             />
-// //           );
-// //         })}
-// //       </div>
-// //     </>
-// //   );
-// // };
-
-// // export default Favorites;
 
 import { useState } from "react";
 import { ORDER, OrderCards, filterCards } from "../../redux/actions";
@@ -91,14 +16,6 @@ const Favorites = (props) => {
     return <h2>No tienes favoritos</h2>;
   }
 
-  // useEffect(() => {
-  //   dispatch(getFavorites());
-
-  //   return () => {
-  //     dispatch(resetFavorites());
-  //   };
-  // }, []);
-
   const handleOrder = (event) => {
     setAux (!aux);
      dispatch (OrderCards(event.target.value))
@@ -109,12 +26,15 @@ const Favorites = (props) => {
   };
 
   return (
-    <div className={styles.divCards}>
+  <div>
+    <div className={styles.filterBar}>
+     <h2>Order</h2>
       <select onChange={handleOrder}>
         <option value="A">Ascendente</option>
         <option value="D">Descendente</option>
       </select>
       
+      <h2>Filter</h2>
       <select onChange={handleFilter}>
         <option value="All">All</option>
         <option value="Male">Male</option>
@@ -122,6 +42,8 @@ const Favorites = (props) => {
         <option value="Genderless">Genderless</option>
         <option value="unknown">unknown</option>
       </select>
+    </div>
+    <div className={styles.divCards}>
       {myFavorites.map((personaje) => {
         const { key, id, name, status, species, gender, origin, image } =
           personaje;
@@ -142,6 +64,7 @@ const Favorites = (props) => {
         );
       })}
     </div>
+  </div>
   );
 };
 
