@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
-  console.log("en el reducer, paylo", state, payload);
+  
   switch (type) {
     case REMOVE_FAV:
       return { ...state, myFavorites: payload };
@@ -15,7 +15,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return { ...state, myFavorites: payload, allCharacters: payload };
 
     case FILTER:
-      console.log("paylo filter",payload);
+     
       if (payload !== "All") {
         return {
           ...state,

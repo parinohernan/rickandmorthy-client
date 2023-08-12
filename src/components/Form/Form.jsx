@@ -31,7 +31,7 @@ const handleChange = (e) => {setUserData({
          [e.target.name]: e.target.value,
         })
         );
-        console.log("errors",errors);
+        //console.log("errors",errors);
       }
       
       const [verPass, setVerpass] = React.useState ({

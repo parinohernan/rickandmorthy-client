@@ -1,7 +1,7 @@
 import Styles from "./About.module.css"
 
 export default function About() {
-    console.log("sea");
+    
     return (<div className={Styles.divContainer}>
             <div className={Styles.divDetails}>
             <div className={Styles.fichaContainer}>
