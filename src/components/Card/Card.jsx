@@ -3,7 +3,8 @@ import { Link, NavLink, useLocation} from 'react-router-dom';
 import { addFav, removeFav } from '../../redux/actions';
 import { connect } from 'react-redux';
 import { useState, useEffect } from 'react';
-//import store from '../../redux/store';
+import { FaTrashAlt, FaHeart } from 'react-icons/fa';
+//import store from '../../redux/store'; FaTrashAlt
 
 
 
@@ -11,20 +12,20 @@ function Card (props) {
    
    const [isFav,setIsFav] = useState(false);
    const direction = useLocation().pathname;
-   const {id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites} = props;
+   const {id, addFav, removeFav, myFavorites} = props;
    
    useEffect(() => {
-      console.log("aver que tenemos en fav, ",myFavorites);
       myFavorites.forEach((fav) => {
-         if (fav.id === props.id) {
-            setIsFav(true);
-         }
+        console.log("fav cargan");
+        if (fav.id === props.id) {
+          setIsFav(true);
+        }
       });
-   //   console.log("dentro el useEfect",myFavorites);
-   }, [myFavorites]);
+  
+    }, [myFavorites]);
 
    function handleFavorite() {
-     console.log("agregando o quitando a favoritos card", props.id);
+     //console.log("agregando o quitando a favoritos card", props.id);
       if (isFav) {
          setIsFav(false)
          removeFav(props.id)
@@ -41,29 +42,34 @@ function Card (props) {
     };
    console.log("direccion=",direction);
    return (
-      <div className={styles.divCard} >
+      <div className={styles.container} >
+         <div className={styles.divBotones}>
          {direction !== "/favorites" && (
-          <button  onClick={handleButtonClick}>
-            X
-          </button>
+               <FaTrashAlt onClick={handleButtonClick} className={styles.boton}></FaTrashAlt>
         )} 
          {
          isFav ? (
-            <button onClick={handleFavorite}>❤️</button>
+            <FaHeart className={styles.botonRed} onClick={handleFavorite}></FaHeart>
+            //<button onClick={handleFavorite} className={styles.boton}>❤️</button>
          ) : (
-            <button onClick={handleFavorite}>🤍</button>
+            <FaHeart className={styles.boton} onClick={handleFavorite}></FaHeart>
+            //<button onClick={handleFavorite} className={styles.boton}>🤍</button>
          )
          }
-         <Link to={'/details/'+id} ><h2 className={styles.name}>{props.name}</h2></Link>
-         
-         <h2 className={styles.espacial}>{props.status}</h2>
-         <h2 className={styles.espacial}>{props.species}</h2>
-         <h2 className={styles.espacial}>{props.gender}</h2>
-         <h2 className={styles.espacial}>{props.origin}</h2>
-         
-         <img className={styles.imgCard} src={props.image} alt='Perfil' />
-         <div className={styles.divInfo}>
-         <h2 className={styles.id}>ID: {props.id}</h2>
+         </div>
+         <div className={styles.containertitles}>
+            <Link to={`/details/${props.id}`} style={{ textDecoration: "none" }}>
+            <h2 className={styles.name}>{props.name}</h2>
+            </Link>
+            <h2 className={styles.espacial}>{props.status}</h2>
+            <h2 className={styles.espacial}>{props.species}</h2>
+            <h2 className={styles.espacial}>{props.gender}</h2>
+            <h2 className={styles.espacial}>{props.origin}</h2>
+            
+            <img className={styles.imgCard} src={props.image} alt='Perfil' />
+            <div className={styles.divInfo}>
+            <h2 className={styles.id}>ID: {props.id}</h2>
+         </div>
          </div>
       </div>
    );

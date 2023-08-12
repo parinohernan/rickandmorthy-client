@@ -10,7 +10,6 @@ return (
    <div className={styles.divCards}>
    {characters.map((personaje) => {
       const {
-         
          id,
          name,
          status,

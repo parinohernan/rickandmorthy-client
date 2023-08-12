@@ -11,10 +11,10 @@ const Favorites = (props) => {
   const dispatch = useDispatch();
   const myFavorites = useSelector((state) => state.myFavorites);
 
-  console.log("favoritos", myFavorites);
-  if (myFavorites.length == 0) {
-    return <h2>No tienes favoritos</h2>;
-  }
+  // console.log("favoritos", myFavorites);
+  // if (myFavorites.length == 0) {
+  //   return <h2>No tienes favoritos</h2>;
+  // }
 
   const handleOrder = (event) => {
     setAux (!aux);

@@ -35,7 +35,6 @@ export default function SearchBar({onSearch, length}) {
             value={id} 
             onChange={handleChange} />
          <button className={styles.botonBar} onClick={handleAdd}> <FaPlus/> </button>
-   
    </div>
    );
 }
